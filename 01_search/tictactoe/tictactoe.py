@@ -79,14 +79,14 @@ def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
+    new_board = deepcopy(board)
     if action is None:
-        return deepcopy(board)
+        return new_board
 
     i, j = action
-    if board[i][j] != EMPTY:
+    if i < 0 or DIM <= i or j < 0 or DIM <= j or board[i][j] != EMPTY:
         raise ValueError("Box is already filled!")
 
-    new_board = deepcopy(board)
     new_board[i][j] = player(new_board)
     return new_board
 
@@ -114,8 +114,7 @@ def terminal(board):
         return True
 
     vec = [x for row in board for x in row]
-    count_empty = vec.count(EMPTY)
-    return count_empty == 0
+    return vec.count(EMPTY) == 0
 
 
 def utility(board):
