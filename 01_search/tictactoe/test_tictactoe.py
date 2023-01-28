@@ -433,6 +433,7 @@ class Test(unittest.TestCase):
     # test test_minimax
     def test_minimax(self):
         test_cases = [
+            # win
             [
                 [
                     [None, "X", "O"],
@@ -453,6 +454,28 @@ class Test(unittest.TestCase):
                     [None, None, "X"],
                     ["O", "O", "X"]
                 ], (1, 1)
+            ],
+            [
+                [
+                    [None, "O", None],
+                    ["O", None, "X"],
+                    [None, "X", None]
+                ], (2, 2)
+            ],
+            # not lose
+            [
+                [
+                    ["O", "X", "O"],
+                    ["X", None, None],
+                    [None, None, None]
+                ], (1, 1)
+            ],
+            [
+                [
+                    [None, "X", None],
+                    ["X", "O", None],
+                    [None, "O", None]
+                ], (0, 0)
             ]
         ]
 
