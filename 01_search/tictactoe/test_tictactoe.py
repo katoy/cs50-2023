@@ -430,9 +430,36 @@ class Test(unittest.TestCase):
             self.assertEqual(actual_result, expected, topic)
 
 
-# test test_minimax
-def test_minimax(self):
-    pass
+    # test test_minimax
+    def test_minimax(self):
+        test_cases = [
+            [
+                [
+                    [None, "X", "O"],
+                    ["O", "X", None],
+                    ["X", None, "O"]
+                ], (2, 1)
+            ],
+            [
+                [
+                    [None, None, "X"],
+                    ["O", "O", "X"],
+                    ["X", None, "O"]
+                ], (0, 0)
+            ],
+            [
+                [
+                    [None, "X", "O"],
+                    [None, None, "X"],
+                    ["O", "O", "X"]
+                ], (1, 1)
+            ]
+        ]
+
+        for topic in test_cases:
+            actual_result = ttt.minimax(topic[0])
+            expected = topic[1]
+            self.assertEqual(actual_result, expected, topic)
 
 
 if __name__ == "__main__":
